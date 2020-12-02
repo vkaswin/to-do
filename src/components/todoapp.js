@@ -49,6 +49,22 @@ class ToDoApp extends Component {
             error : validate,
             imgError : this.state.imgName == '' ? true : false
         })
+        if(this.state.error.fullName != true, this.state.error.email != true, this.state.error.phone != false, this.state.userDetail.company != true, this.state.userDetail.address != true, this.state.imgName != ''){
+            this.state.contactDetail.push(this.state.userDetail);
+            let clear = {...this.state.userDetail,
+                fullName : '',
+                email : '',
+                phone : '',
+                company : '',
+                address : '',
+                img : ''
+            }
+            this.setState({
+                userDetail : clear,
+                imgName: ''
+            })
+            alert('Contact details added successfully')
+        }
     }
     getImage = (event) => {
         this.setState({
@@ -261,15 +277,15 @@ class ToDoApp extends Component {
                                 </div>                             
                             </div>
                             <div className="col-7">
-                                <input className="modal-input" name="fullName" onChange={this.handleChange} type="text" placeholder="Enter your name"></input>
+                                <input className="modal-input" value={this.state.userDetail.fullName} name="fullName" onChange={this.handleChange} type="text" placeholder="Enter your name"></input>
                                 <br></br>
-                                <input className="modal-input" name="email" onChange={this.handleChange} type="text" placeholder="Enter your email"></input>
+                                <input className="modal-input" value={this.state.userDetail.email} name="email" onChange={this.handleChange} type="text" placeholder="Enter your email"></input>
                                 <br></br>
-                                <input className="modal-input" name="phone" onChange={this.handleChange} type="text" placeholder="Enter your mobile number"></input>
+                                <input className="modal-input" value={this.state.userDetail.phone} name="phone" onChange={this.handleChange} type="text" placeholder="Enter your mobile number"></input>
                                 <br></br>
-                                <input className="modal-input" name="company" onChange={this.handleChange} type="text" placeholder="Enter your company name"></input>
+                                <input className="modal-input" value={this.state.userDetail.company} name="company" onChange={this.handleChange} type="text" placeholder="Enter your company name"></input>
                                 <br></br>
-                                <textarea className="modal-input" name="address" onChange={this.handleChange} placeholder="Enter your address"></textarea>
+                                <textarea className="modal-input" value={this.state.userDetail.address} name="address" onChange={this.handleChange} placeholder="Enter your address"></textarea>
                                 <br></br>
                             </div>
                             <div className="img-upload">
