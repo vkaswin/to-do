@@ -446,9 +446,6 @@ class ToDoApp extends Component {
                         </div>
                         </div>
                         <div className="row user-detail-footer">
-                            <div>
-                                
-                            </div>
                             <div className="col-2">
                                 <i className="fa fa-balance-scale balance" aria-hidden="true"></i>
                             </div>
