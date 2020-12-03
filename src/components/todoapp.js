@@ -200,11 +200,11 @@ class ToDoApp extends Component {
             return(
                 <div key={index}>
                     {this.state.currentUser != value.fullName &&               
-                        <div className="row user" onClick={()=>this.clickUser(value)}>
+                        <div className="row user">
                             <div className="col-2">
                                 <input className="check" type="checkbox"></input>
                             </div>
-                            <div className="col-5 content">
+                            <div className="col-5 content" onClick={()=>this.clickUser(value)}>
                                 <div className="row">
                                     <div className="col-3">
                                         {/* <img className="img" src={require('../images/avatar.jpg')}></img> */}
@@ -307,7 +307,7 @@ class ToDoApp extends Component {
             );
         })
         return(
-            <div>
+            <div className="scroll">
                 <div className="row side-menu">
                     <div className="col-1">
                         <i className="fa fa-bars bar" aria-hidden="true"></i>
@@ -318,9 +318,10 @@ class ToDoApp extends Component {
                         <i className="fa fa-calendar side-icon" aria-hidden="true"></i> 
                     </div>
                 </div>
+                <div className="side-align">
                 <div className="row head">
                     <div className="col-2 offset-1">
-                        <i className="fa fa-search" aria-hidden="true"></i>
+                        <i className="fa fa-search search-icon" aria-hidden="true"></i>
                     </div>
                     <div className="col-4 offset-5">
                         <div className="row">
@@ -351,16 +352,19 @@ class ToDoApp extends Component {
                         <hr></hr>
                     </div>
                 </div>
-                <div className="row bottom">
+                </div>
+                <div className="row bottom address-align">
                     <div className="col-5 offset-1">
                         <div className="row">
                             <div className="col-1">
                                 <i className="fa fa-address-book address" aria-hidden="true"></i>
                             </div>
                             <div className="col-8">
-                                <b>Contacts</b>
+                                <b className="contact">Contacts</b>
                                 <br></br>
-                                <span className="font-small">Welcome to Contact Page</span>
+                                <div className="welcome-position">
+                                    <span className="font-small">Welcome to Contact Page</span>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -371,7 +375,7 @@ class ToDoApp extends Component {
                         </select>
                     </div>
                 </div>
-                <div className="row bottom">
+                <div className="row bottom search-align">
                     <div className="col-3 offset-1">
                         <input className="search-box" type="text" placeholder="Search Contacts"></input>
                         <i className="fa fa-search search" aria-hidden="true"></i>
@@ -380,7 +384,7 @@ class ToDoApp extends Component {
                         <button className="add-product" data-toggle="modal" data-target="#myModal"><b>+ Add Contact</b></button>
                     </div>
                 </div>
-                <div className="row">
+                <div className="row contact-list">
                     <div className="col-6 offset-1">
                         <div className="row category">
                             <div className="col-2">
@@ -395,7 +399,7 @@ class ToDoApp extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="row">
+                <div className="row contact-list">
                     <div className="col-6 offset-1">
                         {contacts}
                     </div>    
@@ -453,8 +457,7 @@ class ToDoApp extends Component {
                                 <br></br>
                                 <span className="font-small">Date: 2 Dec,2020 - 2.00pm</span>
                             </div>
-                        </div>
-                        
+                        </div>  
                     </div>
                 </div>
                 <div id="myModal" className="modal fade" role="dialog">

@@ -9,8 +9,7 @@
   outline: none;
 }
 .add-product{
-  /* background-image: linear-gradient(to right, red , yellow); */
-  background-color: rgb(234 67 53);
+  background-image: linear-gradient(to right,rgb(252, 134, 100),rgb(255, 101, 163));
   border: none;
   color: white;
   border-radius: 2px;
@@ -70,7 +69,7 @@ button:focus{
   margin-left: 2px;
 }
 .address{
-  font-size: xx-large;
+  font-size: 36px;
   position: absolute;
   margin-left: 10px;
   margin-top: 5px;
@@ -208,23 +207,47 @@ label {
   margin-top: 10px;
 }
 .side-menu{
-  background-color: rgb(234 67 53);
+  background-image: linear-gradient(180deg,rgb(252, 134, 100),rgb(255, 101, 163));
   height: 100vh;
   float: left;
   position: absolute;
-  width: 100px;
+  width: 75px;
   top: 0;
 }
 .bar{
   font-size: 24px;
   color: white;
-  margin-left: 30px;
+  margin-left: 20px;
   margin-top: 20px;
   margin-bottom: 40px;
 }
 .side-icon{
   font-size: 24px;
   color: white;
-  margin-left: 30px;
+  margin-left: 20px;
   margin-bottom: 40px;
+}
+.scroll{
+  overflow-x: hidden;
+}
+.side-align{
+  margin-left: -70px;
+}
+.contact{
+  font-size: 24px;
+}
+.welcome-position{
+  margin-top: -10px;
+}
+.search-align{
+  margin-left: 10px;
+}
+.address-align{
+  margin-left: -50px;
+}
+.contact-list{
+  margin-left: 30px;
+}
+.search-icon{
+  margin-left: 20px;
 }
