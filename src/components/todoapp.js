@@ -14,7 +14,34 @@ class ToDoApp extends Component {
                     company : 'DoodleBlue',
                     position : 'Front-End Developer',
                     address : 'No.7/2, Sri Rangammal Street, Oldwashermenptet',
-                    img : 'https://avatar.oxro.io/avatar.svg?name=John+Smith&background=6ab04c&color=000'
+                    img : 'https://play-lh.googleusercontent.com/-MRKE1au0vLY/AAAAAAAAAAI/AAAAAAAABMg/AMZuuckzvQcVXN_S-ohf2_1hDAnHfAkswQ/photo.jpg'
+                },
+                {
+                    fullName : 'Rahul',
+                    email : 'rahul@gmail.com',
+                    phone : '9044875434',
+                    company : 'Amazon',
+                    position : 'Android Developer',
+                    address : 'No.7/2, Sri Rangammal Street, Oldwashermenptet',
+                    img : 'http://i0.wp.com/www.soundsolutionsaudio.com/forum/uploads/monthly_2017_07/R.png.27db293909434fa575fd10c94d5da159.png'
+                },
+                {
+                    fullName : 'Celine',
+                    email : 'celine@gmail.com',
+                    phone : '8095823474',
+                    company : 'Wipro',
+                    position : 'PHP Developer',
+                    address : 'No.7/2, Sri Rangammal Street, Oldwashermenptet',
+                    img : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRO3XhDLDJGPz-NtQDCpNTO1mOreltTWsyYvqC0MJ1b8sAgWCJZr1jdCxBGaUEnk9Z7o_4vvW6pDz5MfPB7Wxa0xGgIyKsO_ILSDA&usqp=CAU&ec=45732302'
+                },
+                {
+                    fullName : 'Daniel',
+                    email : 'daniel@gmail.com',
+                    phone : '8096826474',
+                    company : 'Accenture',
+                    position : 'IOS Developer',
+                    address : 'No.7/2, Sri Rangammal Street, Oldwashermenptet',
+                    img : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnIMKi9tv_JXPZMznkX2O7Z0Ez51erYhvoTJEXw3y26IJ4ILul_f9DD7n2ha3B3PKu1MP8jWCLlx1dPo5Lbt6rdNCwQqsCTfP1gQ&usqp=CAU&ec=45732302'
                 }
             ],
             userDetail : {
@@ -77,18 +104,18 @@ class ToDoApp extends Component {
         let emial = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
         let number = /^\+?\d[\d -]{8,10}\d$/;
         let validate = {...this.state.error,
-            fullName: this.state.userDetail.fullName == '' ? true : false,
+            fullName: this.state.userDetail.fullName === '' ? true : false,
             email: !emial.test(this.state.userDetail.email),
             phone: !number.test(this.state.userDetail.phone),
-            company: this.state.userDetail.company == '' ? true : false,
-            position: this.state.userDetail.position == '' ? true : false,
-            address: this.state.userDetail.address == '' ? true : false
+            company: this.state.userDetail.company === '' ? true : false,
+            position: this.state.userDetail.position === '' ? true : false,
+            address: this.state.userDetail.address === '' ? true : false
         }
         this.setState({
             error : validate,
-            imgError : this.state.imgName == '' ? true : false
+            imgError : this.state.imgName === '' ? true : false
         })
-        if(this.state.userDetail.fullName != '' && emial.test(this.state.userDetail.email) && number.test(this.state.userDetail.phone) && this.state.userDetail.company != '' && this.state.userDetail.position != '' && this.state.userDetail.address != '' && this.state.imgName != ''){
+        if(this.state.userDetail.fullName !== '' && emial.test(this.state.userDetail.email) && number.test(this.state.userDetail.phone) && this.state.userDetail.company !== '' && this.state.userDetail.position !== '' && this.state.userDetail.address !== '' && this.state.imgName !== ''){
             this.state.contactDetail.push(this.state.userDetail);
             let clear = {...this.state.userDetail,
                 fullName : '',
@@ -129,27 +156,26 @@ class ToDoApp extends Component {
         })
     }
     onEdit(value){
-        this.state.tempUserDetail = value;
         this.setState({
-            tempUserDetail : this.state.tempUserDetail
+            tempUserDetail : value
         })
     }
     onUpdate(index){
         let emial = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
         let number = /^\+?\d[\d -]{8,10}\d$/;
         let validate = {...this.state.updateError,
-            fullName: this.state.tempUserDetail.fullName == '' ? true : false,
+            fullName: this.state.tempUserDetail.fullName === '' ? true : false,
             email: !emial.test(this.state.tempUserDetail.email),
             phone: !number.test(this.state.tempUserDetail.phone),
-            company: this.state.tempUserDetail.company == '' ? true : false,
-            position: this.state.tempUserDetail.position == '' ? true : false,
-            address: this.state.tempUserDetail.address == '' ? true : false
+            company: this.state.tempUserDetail.company === '' ? true : false,
+            position: this.state.tempUserDetail.position === '' ? true : false,
+            address: this.state.tempUserDetail.address === '' ? true : false
         }
         this.setState({
             updateError : validate,
-            updateImgError : this.state.updateImgName == '' ? true : false
+            updateImgError : this.state.updateImgName === '' ? true : false
         })
-        if(this.state.tempUserDetail.fullName != '' && emial.test(this.state.tempUserDetail.email) && number.test(this.state.tempUserDetail.phone) && this.state.tempUserDetail.company != '' && this.state.tempUserDetail.position != '' && this.state.tempUserDetail.address != '' && this.state.updateImgName != ''){
+        if(this.state.tempUserDetail.fullName !== '' && emial.test(this.state.tempUserDetail.email) && number.test(this.state.tempUserDetail.phone) && this.state.tempUserDetail.company !== '' && this.state.tempUserDetail.position !== '' && this.state.tempUserDetail.address !== '' && this.state.updateImgName !== ''){
             let update = this.state.contactDetail;
             update[index] = this.state.tempUserDetail;
             this.setState({
@@ -185,9 +211,8 @@ class ToDoApp extends Component {
           }
     }
     clickUser(value){
-        this.state.individualDetail = value;
         this.setState({
-            individualDetail : this.state.individualDetail
+            individualDetail : value
         })
     }
     handleDropDown = (event) => {
@@ -195,29 +220,47 @@ class ToDoApp extends Component {
             currentUser : event.target.value
         }) 
     }
+    onCancel(){
+        let clear = {
+            fullName : false,
+            email : false,
+            phone : false,
+            company : false,
+            position : false,
+            address : false
+        }
+        this.setState({
+            error : clear,
+            updateError : clear,
+            imgName: '',
+            imgError: undefined,
+            updateImgName : '',
+            updateImgError : undefined
+        })
+    }
     render(){
         let contacts = this.state.contactDetail.map((value,index)=>{
             return(
                 <div key={index}>
-                    {this.state.currentUser != value.fullName &&               
+                    {this.state.currentUser !== value.fullName &&               
                         <div className="row user">
-                            <div className="col-2">
+                            <div className="col-1">
                                 <input className="check" type="checkbox"></input>
                             </div>
                             <div className="col-5 content" onClick={()=>this.clickUser(value)}>
                                 <div className="row">
                                     <div className="col-3">
                                         {/* <img className="img" src={require('../images/avatar.jpg')}></img> */}
-                                        <img className="img" src={value.img}></img>
+                                        <img className="img" src={value.img} alt=""></img>
                                     </div>
-                                    <div className="col-8">
+                                    <div className="col-9">
                                         <b> {value.fullName} </b>
                                         <br></br>
                                         <span> {value.email} </span>
                                     </div>
                                 </div>
                             </div>
-                            <div className="col-3 company">
+                            <div className="col-4 company">
                                 <b> {value.company} </b>
                             </div>
                             <div className="col-1 edit-delete">
@@ -228,15 +271,15 @@ class ToDoApp extends Component {
                                 <i className="fa fa-commenting-o" aria-hidden="true"></i>
                             </div>
                             <div id={"myModal"+index.toString()} className="modal fade" role="dialog">
-                    <div className="modal-dialog">
+                        <div className="modal-dialog">
 
-                    <div className="modal-content">
-                        <div className="center">
-                            <b className="modal-head">Edit Contact</b>
-                    </div>
-                    <button type="button" className="close modal-head" data-dismiss="modal">&times;</button>
-                    <div className="modal-body">
-                    <div className="row">
+                        <div className="modal-content">
+                            <div className="center">
+                                <b className="modal-head">Edit Contact</b>
+                        </div>
+                        <button type="button" className="close modal-head" data-dismiss="modal" onClick={()=>this.onCancel()}>&times;</button>
+                        <div className="modal-body">
+                        <div className="row">
                             <div className="col-4 offset-1">
                                 <div className="modal-bottom">
                                     <b>Full Name:</b>
@@ -288,11 +331,11 @@ class ToDoApp extends Component {
                                 <br></br>
                                 <label htmlFor="update-photo"><b>Upload</b></label>
                                 <input type="file" id="update-photo" onChange={this.updateImage}></input>
-                                {this.state.updateImgName != '' && <span style={{color:"green"}}> {this.state.updateImgName} </span>}
+                                {this.state.updateImgName !== '' && <span style={{color:"green"}}> {this.state.updateImgName} </span>}
                                 {this.state.updateImgError && <div style={{color:"red"}}><span>Please upload an image</span></div>}
                                 <br></br>
                                 <div className="btn">
-                                    <button className="btn-cancel" data-dismiss="modal">Cancel</button>
+                                    <button className="btn-cancel" data-dismiss="modal" onClick={()=>this.onCancel()}>Cancel</button>
                                     <button className="btn-save" onClick={()=>this.onUpdate(index)}>Update</button>
                                 </div>
                             </div>
@@ -387,13 +430,13 @@ class ToDoApp extends Component {
                 <div className="row contact-list">
                     <div className="col-6 offset-1">
                         <div className="row category">
-                            <div className="col-2">
+                            <div className="col-1">
                                     <b>+</b>
                                 </div>
                                 <div className="col-5">
                                     <b>Basic info</b>
                                 </div>
-                                <div className="col-5">
+                                <div className="col-4">
                                     <b>Company</b>
                                 </div>
                         </div>
@@ -406,7 +449,7 @@ class ToDoApp extends Component {
                     <div className="col-5">
                         <div className="user-detail">
                             <div className="img-align">
-                                <img className="img-detail" src={this.state.individualDetail.img}></img>
+                                <img className="img-detail" src={this.state.individualDetail.img} alt=""></img>
                                 <br></br>
                                 <b> {this.state.individualDetail.fullName} </b>
                                 <br></br>
@@ -464,7 +507,7 @@ class ToDoApp extends Component {
                         <div className="center">
                             <b className="modal-head">Add Contact</b>
                     </div>
-                    <button type="button" className="close modal-head" data-dismiss="modal">&times;</button>
+                    <button type="button" className="close modal-head" data-dismiss="modal" onClick={()=>this.onCancel()}>&times;</button>
                     <div className="modal-body">
                     <div className="row">
                             <div className="col-4 offset-1">
@@ -518,11 +561,11 @@ class ToDoApp extends Component {
                                 <br></br>
                                 <label htmlFor="upload-photo"><b>Upload</b></label>
                                 <input type="file" id="upload-photo" onChange={this.getImage}></input>
-                                {this.state.imgName != '' && <span style={{color:"green"}}> {this.state.imgName} </span>}
+                                {this.state.imgName !== '' && <span style={{color:"green"}}> {this.state.imgName} </span>}
                                 {this.state.imgError && <div style={{color:"red"}}><span>Please upload an image</span></div>}
                                 <br></br>
                                 <div className="btn">
-                                    <button className="btn-cancel" data-dismiss="modal">Cancel</button>
+                                    <button className="btn-cancel" data-dismiss="modal" onClick={()=>this.onCancel()}>Cancel</button>
                                     <button className="btn-save" onClick={()=>this.onSave()}>Save</button>
                                 </div>
                             </div>
