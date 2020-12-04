@@ -20,6 +20,11 @@ class ChatBox extends Component{
             text : ''
         })
     }
+    pressEnter = (event) => {
+        if(event.key === "Enter"){
+            this.sendMessage();
+        }
+    }
     render(){
         let displayMessages = this.state.messages.map((value,index)=>{
             return(
@@ -37,7 +42,7 @@ class ChatBox extends Component{
                 <div className="chat-header">
                     <div className="row">
                         <div className="col-2">
-                            <img className="chat-img" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRO3XhDLDJGPz-NtQDCpNTO1mOreltTWsyYvqC0MJ1b8sAgWCJZr1jdCxBGaUEnk9Z7o_4vvW6pDz5MfPB7Wxa0xGgIyKsO_ILSDA&usqp=CAU&ec=45732302"></img>
+                            <img className="chat-img" src="https://play-lh.googleusercontent.com/-MRKE1au0vLY/AAAAAAAAAAI/AAAAAAAABMg/AMZuuckzvQcVXN_S-ohf2_1hDAnHfAkswQ/photo.jpg"></img>
                         </div>
                         <div className="col-4 chat-header-font">
                             <b>Aswin Kumar</b>
@@ -52,7 +57,7 @@ class ChatBox extends Component{
                 <div className="scroll-down">
                     {displayMessages}
                 </div>
-                <input className="text-box" type="text" value={this.state.text} name="text" placeholder="Type a message" onChange={this.getMessage}></input>
+                <input autoFocus={true} className="text-box" type="text" value={this.state.text} onKeyPress={this.pressEnter} name="text" placeholder="Type a message" onChange={this.getMessage}></input>
                 <i className="fa fa-paper-plane send-icon" aria-hidden="true" onClick={()=>this.sendMessage()}></i>
             </div>
         );
