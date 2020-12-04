@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import ChatBox from './chatBox'
+
 import 'font-awesome/css/font-awesome.min.css';
 
 class ToDoApp extends Component {
@@ -74,13 +76,13 @@ class ToDoApp extends Component {
             updateImgName : '',
             updateImgError : undefined,
             individualDetail : {
-                fullName : 'Aswin Kumar',
-                email : 'vkaswin1998@gmail.com',
-                phone : '9094825474',
-                company : 'DoodleBlue',
-                position : 'Front-End Developer',
-                address : 'No.7/2, Sri Rangammal Street, Oldwashermenptet',
-                img : 'https://avatar.oxro.io/avatar.svg?name=John+Smith&background=6ab04c&color=000'
+                fullName : '',
+                email : '',
+                phone : '',
+                company : '',
+                position : '',
+                address : '',
+                img : ''
             },
             tempUserDetail: {
                 fullName : '',
@@ -91,7 +93,9 @@ class ToDoApp extends Component {
                 address : '',
                 img : ''
             },
-            currentUser : ''
+            currentUser : '',
+            showUserDetail : false,
+            openChatBox : false
         }
     }
     handleChange = (event) => {
@@ -212,7 +216,15 @@ class ToDoApp extends Component {
     }
     clickUser(value){
         this.setState({
-            individualDetail : value
+            individualDetail : value,
+            showUserDetail : true,
+            openChatBox : false
+        })
+    }
+    openChatBox(){
+        this.setState({
+            openChatBox : true,
+            showUserDetail : false
         })
     }
     handleDropDown = (event) => {
@@ -268,7 +280,7 @@ class ToDoApp extends Component {
                                 <i className="fa fa-trash-o" onClick={()=>this.onDelete(index)} aria-hidden="true"></i>
                             </div>
                             <div className="col-1 chat">
-                                <i className="fa fa-commenting-o" aria-hidden="true"></i>
+                                <i className="fa fa-commenting-o" aria-hidden="true" onClick={()=>this.openChatBox()}></i>
                             </div>
                             <div id={"myModal"+index.toString()} className="modal fade" role="dialog">
                         <div className="modal-dialog">
@@ -445,7 +457,12 @@ class ToDoApp extends Component {
                 <div className="row contact-list">
                     <div className="col-6 offset-1">
                         {contacts}
-                    </div>    
+                    </div>
+                    {this.state.openChatBox && 
+                    <div className="chat-box">
+                        <ChatBox></ChatBox>
+                    </div>}
+                    {this.state.showUserDetail &&    
                     <div className="col-5">
                         <div className="user-detail">
                             <div className="img-align">
@@ -497,8 +514,8 @@ class ToDoApp extends Component {
                                 <br></br>
                                 <span className="font-small">Date: 2 Dec,2020 - 2.00pm</span>
                             </div>
-                        </div>  
-                    </div>
+                        </div> 
+                    </div>}
                 </div>
                 <div id="myModal" className="modal fade" role="dialog">
                     <div className="modal-dialog">
