@@ -1,3 +1,3 @@
-export function productsAction(cartProduct){
-    return{type:'CART_PRODUCT', value: cartProduct}
+export function messages(sendDetails){
+    return{type:'MESSAGES', value: sendDetails}
 }

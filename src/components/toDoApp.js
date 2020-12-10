@@ -95,7 +95,11 @@ class ToDoApp extends Component {
             },
             currentUser : '',
             showUserDetail : false,
-            openChatBox : false
+            openChatBox : false,
+            chatBoxHeader : {
+                img : '',
+                fullName : ''
+            }
         }
     }
     handleChange = (event) => {
@@ -221,16 +225,19 @@ class ToDoApp extends Component {
             openChatBox : false
         })
     }
-    openChatBox(){
+    openChatBox(index){
+        let data = {...this.state.chatBoxHeader, img : this.state.contactDetail[index].img, fullName : this.state.contactDetail[index].fullName }
         this.setState({
             openChatBox : true,
-            showUserDetail : false
+            showUserDetail : false,
+            chatBoxHeader : data
         })
     }
     handleDropDown = (event) => {
         this.setState({
-            currentUser : event.target.value
-        }) 
+            currentUser : event.target.value,
+            openChatBox : false
+        })
     }
     onCancel(){
         let clear = {
@@ -280,7 +287,7 @@ class ToDoApp extends Component {
                                 <i className="fa fa-trash-o" onClick={()=>this.onDelete(index)} aria-hidden="true"></i>
                             </div>
                             <div className="col-1 chat">
-                                <i className="fa fa-commenting-o" aria-hidden="true" onClick={()=>this.openChatBox()}></i>
+                                <i className="fa fa-commenting-o" aria-hidden="true" onClick={()=>this.openChatBox(index)}></i>
                             </div>
                             <div id={"myModal"+index.toString()} className="modal fade" role="dialog">
                         <div className="modal-dialog">
@@ -460,7 +467,7 @@ class ToDoApp extends Component {
                     </div>
                     {this.state.openChatBox && 
                     <div className="chat-box">
-                        <ChatBox></ChatBox>
+                        <ChatBox chatBoxHeader={this.state.chatBoxHeader} currentUser={this.state.currentUser}></ChatBox>
                     </div>}
                     {this.state.showUserDetail &&    
                     <div className="col-5">

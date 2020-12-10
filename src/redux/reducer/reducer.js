@@ -1,11 +1,10 @@
 const initialValue = {
-    products : []
+    chatLog : []
 }
 export default function reducer( state=initialValue,action ){
-    console.log(action)
     switch(action.type){
-        case 'CART_PRODUCT' :
-            return {...state, products: [...state.products, action.value]}
+        case 'MESSAGES' :
+            return {...state, chatLog: [...state.chatLog, action.value]}
         default:
             return state;
     }
